@@ -1,5 +1,6 @@
 package com.example.fullstack.api.model;
 
+import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -8,6 +9,7 @@ import java.time.LocalDateTime;
 
 @Getter
 @Setter
+@Data
 @Entity
 @Table(name = "TAB_MOVIMENTACAO")
 public class Movimentacao {
@@ -24,5 +26,8 @@ public class Movimentacao {
 
     @Enumerated(EnumType.STRING)
     private MovimentacaoTipo tipo;
+
+    @Column(name = "id_conta")
+    private Integer idConta;
 
 }

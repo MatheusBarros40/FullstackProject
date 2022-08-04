@@ -1,5 +1,6 @@
 package com.example.fullstack.api.model;
 
+import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -8,6 +9,7 @@ import javax.persistence.Embeddable;
 
 @Getter
 @Setter
+@Data
 @Embeddable
 public class Conta {
     @Column(name = "conta_numero")
