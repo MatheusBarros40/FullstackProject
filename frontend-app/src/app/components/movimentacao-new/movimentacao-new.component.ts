@@ -44,7 +44,6 @@ export class MovimentacaoNewComponent implements OnInit {
       tipo:this.tipo,
       idConta:this.correntista.id,
       dataHora:this.dataHora
-
     };
     console.log(movimentacao);
     this.movimentacaoService.create(movimentacao)
@@ -54,7 +53,8 @@ export class MovimentacaoNewComponent implements OnInit {
         },
         error => {
           console.log(error);
+          alert("Error");
         });
-  }
+      }
 
 }
