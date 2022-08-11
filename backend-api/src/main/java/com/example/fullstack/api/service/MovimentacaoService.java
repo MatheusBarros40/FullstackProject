@@ -7,9 +7,11 @@ import com.example.fullstack.api.model.MovimentacaoTipo;
 import com.example.fullstack.api.repository.CorrentistaRepository;
 import com.example.fullstack.api.repository.MovimentacaoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.Optional;
 
 @Service
 public class MovimentacaoService {
@@ -20,8 +22,7 @@ public class MovimentacaoService {
     private CorrentistaRepository correntistaRepository;
 
     public void save(NovaMovimentacao novaMovimentacao){
-        Movimentacao movimentacao = new Movimentacao()
-                ;
+        Movimentacao movimentacao = new Movimentacao();
         Double valor = novaMovimentacao.getTipo()== MovimentacaoTipo.RECEITA ? novaMovimentacao.getValor() : novaMovimentacao.getValor() * -1;
 
         movimentacao.setDataHora(LocalDateTime.now());
@@ -37,5 +38,4 @@ public class MovimentacaoService {
         }
         repository.save(movimentacao);
     }
-
 }

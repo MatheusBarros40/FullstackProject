@@ -3,8 +3,10 @@ package com.example.fullstack.api.service;
 import com.example.fullstack.api.dto.NovoCorrentista;
 import com.example.fullstack.api.model.Conta;
 import com.example.fullstack.api.model.Correntista;
+import com.example.fullstack.api.model.Movimentacao;
 import com.example.fullstack.api.repository.CorrentistaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
