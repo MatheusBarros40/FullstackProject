@@ -7,6 +7,7 @@ import com.example.fullstack.api.repository.MovimentacaoRepository;
 import com.example.fullstack.api.service.CorrentistaService;
 import com.example.fullstack.api.service.MovimentacaoService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
@@ -47,7 +48,18 @@ public class MovimentacaoController {
     }
 
     @PutMapping("/{idConta}")
-    private void save(@RequestBody Movimentacao movimentacao) {
-        repository.save(movimentacao);
+    private ResponseEntity<Movimentacao> save(@RequestBody Movimentacao novaMovimentacao, @PathVariable(value = "idConta") Integer idConta) {
+        Optional<Movimentacao> atualMovimentacao = repository.findById(idConta);
+        if(atualMovimentacao.isPresent()){
+            Movimentacao movimentacao = atualMovimentacao.get();
+            movimentacao.setDataHora(LocalDateTime.now());
+            movimentacao.setDescricao(novaMovimentacao.getDescricao());
+            movimentacao.setIdConta(novaMovimentacao.getIdConta());
+            movimentacao.setTipo(novaMovimentacao.getTipo());
+            repository.save(movimentacao);
+            return new ResponseEntity<Movimentacao>(movimentacao, HttpStatus.OK);
+        }else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
     }
 }
