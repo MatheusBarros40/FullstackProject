@@ -6,6 +6,9 @@
   </div>
   <div class="row g-2">
     <div class="col-md-3">
+      <input  class="form-control" id="iId" [(ngModel)]="id"  placeholder="#">
+    </div>
+    <div class="col-md-3">
       <input  class="form-control" id="iCpf" [(ngModel)]="cpf"  placeholder="CPF">
     </div>
     <div class="col-5">
@@ -19,11 +22,16 @@
     </div>
   </div>
   <p></p>
-  <div *ngFor="let item of correntistas; index as i" class="card" style="width: 18rem;">
+  <form (ngSubmit)="onSubmit()" class="d-flex justify-content-center" >
+  <div *ngFor="let item of correntistas; index as i" class="card m-auto p-1" >
     <div class="card-body">
       <h5 class="card-title">{{item.nome}}</h5>
+      <p class="card-text"># {{item.id}}</p>
       <p class="card-text">Conta N° {{item.conta.numero}}</p>
       <p class="card-text">Saldo {{item.conta.saldo | currency:'BRL'}}</p>
     </div>
+    <button class="btn btn-danger btn-m-auto p-1 rounded" (click)="delete()">Excluir</button>
+    <button class="btn btn-info btn-m-auto p-1 rounded" (click)="editarCorrentista()">Editar</button>
   </div>
+</form>
 </div>

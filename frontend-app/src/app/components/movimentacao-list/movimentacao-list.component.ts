@@ -44,4 +44,11 @@ export class MovimentacaoListComponent implements OnInit {
           console.log(error);
         });
   }
+
+  deletaGeral(): void {
+    this.correntistaService.deleteAll()
+    .subscribe(response => {
+      console.log(response);
+    })
+  }
 }

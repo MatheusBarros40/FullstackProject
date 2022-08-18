@@ -18,4 +18,16 @@ export class CorrentistaService {
  create(correntista:any): Observable<any> {
   return this.http.post(`${baseUrl}/correntistas`,correntista);
 }
+
+  update(correntista:any, id: string): Observable<any> {
+    return this.http.put(`${baseUrl}/correntistas/${id}`,correntista);
+  }
+
+  delete(id: string): Observable<any> {
+    return this.http.delete(`${baseUrl}/correntistas/${id}`);
+  }
+  
+  deleteAll(): Observable<any> {
+    return this.http.delete(baseUrl);
+  }
 }

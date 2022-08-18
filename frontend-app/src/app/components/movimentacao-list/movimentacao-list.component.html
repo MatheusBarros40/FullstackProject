@@ -8,17 +8,19 @@
         <option *ngFor="let c of correntistas" [ngValue]="c">{{c.cpf}}-{{c.nome}}</option>
       </select>
     <button class="btn btn-outline-secondary me-md-2 btn-sm rounded" type="button" (click)="listMovimentacoes()">Buscar</button>
+    <button class="btn btn-outline-warning me-md-2 btn-sm rounded" type="button" (click)="deletaGeral()">Resetar Correntistas</button>
   </div>
 <table class="table table-striped">
     <thead>
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">Data Hora</th>
-      <th scope="col">Descrição</th>
-      <th scope="col">Valor</th>
-      <th scope="col">Tipo</th>
+      <a class="btn btn-success btn-sm m-1 rounded" routerLink="/movimentacoes-new">Nova Movimentação</a>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Data Hora</th>
+        <th scope="col">Descrição</th>
+        <th scope="col">Valor</th>
+        <th scope="col">Tipo</th>
     </tr>
-    </thead>
+  </thead>
     <tbody>
     <tr *ngFor="let item of movimentacoes; index as i">
       <th scope="row">{{ i + 1 }}</th>
